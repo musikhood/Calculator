@@ -1,0 +1,73 @@
+.Calculator {
+  width: 600px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+
+  &__HeaderContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__title {
+    color: var(--text);
+    transition: color 0.2s ease-in-out;
+  }
+  &__ThemeSwitcherContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  &__ThemeSwitcherName {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--text);
+    transition: color 0.2s ease-in-out;
+  }
+  &__ThemeSwitcher {
+    width: 60px;
+    height: 20px;
+    background-color: var(--toggleAndKeypadBackground);
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s ease-in-out;
+    &::after {
+      content: "";
+      width: 15px;
+      height: 15px;
+      border-radius: 50px;
+      background-color: var(--keyTwoBackgroundAndToggle);
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    }
+    &--1::after {
+      transform: translateY(-50%) translateX(5px);
+    }
+    &--2::after {
+      transform: translateY(-50%) translateX(calc(30px - 50%));
+    }
+    &--3::after {
+      transform: translateY(-50%) translateX(calc(50px - 50%));
+    }
+    &:hover::after {
+      background-color: var(--keyTwoShadow);
+    }
+  }
+  &__ThemeNumbers {
+    width: 60px;
+    font-size: 10px;
+    color: var(--text);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: -15px;
+    transition: color 0.2s ease-in-out;
+  }
+}

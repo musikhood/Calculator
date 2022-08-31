@@ -1,7 +1,12 @@
 .App {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--mainBackground);
+  color: var(--textAlt);
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   &--1 {
     --mainBackground: hsl(222, 26%, 31%);
     --toggleAndKeypadBackground: hsl(223, 31%, 20%);
@@ -14,8 +19,8 @@
     --keyThreeBackground: hsl(30, 25%, 89%);
     --keyThreeShadow: hsl(28, 16%, 65%);
 
-    --text: hsl(221, 14%, 31%);
-    --textAlt: hsl(0, 0%, 100%);
+    --text: hsl(0, 0%, 100%);
+    --textAlt: hsl(221, 14%, 31%);
   }
   &--2 {
     --mainBackground: hsl(0, 0%, 90%);
