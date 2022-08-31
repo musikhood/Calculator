@@ -21,6 +21,7 @@
 
     --text: hsl(0, 0%, 100%);
     --textAlt: hsl(221, 14%, 31%);
+    --textAlt3: hsl(221, 14%, 31%);
   }
   &--2 {
     --mainBackground: hsl(0, 0%, 90%);
@@ -36,6 +37,7 @@
 
     --text: hsl(60, 10%, 19%);
     --textAlt: hsl(0, 0%, 100%);
+    --textAlt3: hsl(60, 10%, 19%);
   }
   &--3 {
     --mainBackground: hsl(268, 75%, 9%);
@@ -51,5 +53,6 @@
 
     --text: hsl(52, 100%, 62%);
     --textAlt: hsl(0, 0%, 100%);
+    --textAlt3: hsl(52, 100%, 62%);
   }
 }
