@@ -40,7 +40,9 @@ function Calculator({ setTheme, theme }: Theme) {
           <div className="Calculator__button">7</div>
           <div className="Calculator__button">8</div>
           <div className="Calculator__button">9</div>
-          <div className="Calculator__button">DEL</div>
+          <div className="Calculator__button Calculator__button--altColor">
+            DEL
+          </div>
           <div className="Calculator__button">4</div>
           <div className="Calculator__button">5</div>
           <div className="Calculator__button">6</div>
@@ -53,10 +55,12 @@ function Calculator({ setTheme, theme }: Theme) {
           <div className="Calculator__button">0</div>
           <div className="Calculator__button">/</div>
           <div className="Calculator__button">x</div>
-          <div className="Calculator__button Calculator__button--span">
+          <div className="Calculator__button Calculator__button--span Calculator__button--altColor">
             RESET
           </div>
-          <div className="Calculator__button Calculator__button--span">=</div>
+          <div className="Calculator__button Calculator__button--span Calculator__button--altColor2">
+            =
+          </div>
         </div>
       </div>
     </div>

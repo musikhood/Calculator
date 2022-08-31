@@ -1,9 +1,12 @@
 .Calculator {
-  width: 600px;
-  height: 700px;
+  width: 50rem;
+  height: 60rem;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 4rem;
+  @media screen and (max-width: 450px) {
+    width: 40rem;
+  }
   &__HeaderContainer {
     width: 100%;
     display: flex;
@@ -11,6 +14,7 @@
     align-items: center;
   }
   &__title {
+    font-size: 2.6rem;
     color: var(--text);
     transition: color 0.2s ease-in-out;
   }
@@ -18,28 +22,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 2rem;
   }
   &__ThemeSwitcherName {
-    font-size: 12px;
+    font-size: 1.2rem;
     letter-spacing: 2px;
     color: var(--text);
     transition: color 0.2s ease-in-out;
     user-select: none;
   }
   &__ThemeSwitcher {
-    width: 60px;
-    height: 20px;
+    width: 6rem;
+    height: 2rem;
     background-color: var(--toggleAndKeypadBackground);
-    border-radius: 50px;
+    border-radius: 5rem;
     cursor: pointer;
     position: relative;
     transition: background-color 0.2s ease-in-out;
     &::after {
       content: "";
-      width: 15px;
-      height: 15px;
-      border-radius: 50px;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 5rem;
       background-color: var(--keyTwoBackgroundAndToggle);
       position: absolute;
       top: 50%;
@@ -47,28 +51,29 @@
       transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
     }
     &--1::after {
-      transform: translateY(-50%) translateX(5px);
+      transform: translateY(-50%) translateX(0.5rem);
     }
     &--2::after {
-      transform: translateY(-50%) translateX(calc(30px - 50%));
+      transform: translateY(-50%) translateX(calc(3rem - 50%));
     }
     &--3::after {
-      transform: translateY(-50%) translateX(calc(50px - 50%));
+      transform: translateY(-50%) translateX(calc(4.7rem - 50%));
     }
     &:hover::after {
       background-color: var(--keyTwoShadow);
     }
   }
   &__ThemeNumbers {
-    width: 60px;
-    font-size: 10px;
+    width: 5.8rem;
+    font-size: 1rem;
     color: var(--text);
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: absolute;
-    left: 0;
-    top: -15px;
+    left: 50%;
+    top: -1.5rem;
+    transform: translateX(-50%);
     transition: color 0.2s ease-in-out;
     user-select: none;
   }
@@ -77,12 +82,12 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 2rem;
   }
   &__screen {
     width: 100%;
-    min-height: 100px;
-    border-radius: 10px;
+    min-height: 10rem;
+    border-radius: 1rem;
     background-color: var(--screenBackground);
     display: flex;
     align-items: center;
@@ -90,39 +95,74 @@
     transition: background-color 0.2s ease-in-out;
 
     h1 {
-      margin-right: 50px;
-      font-size: 40px;
+      margin-right: 5rem;
+      font-size: 5rem;
       color: var(--text);
       transition: color 0.2s ease-in-out;
+      user-select: none;
     }
   }
   &__buttonsContainer {
     width: 100%;
     height: 100%;
     background-color: var(--toggleAndKeypadBackground);
-    border-radius: 10px;
+    border-radius: 1rem;
     transition: background-color 0.2s ease-in-out;
     display: grid;
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 30px;
+    gap: 2rem;
+    padding: 3rem;
+    @media screen and (max-width: 450px) {
+      padding: 3rem;
+    }
   }
   &__button {
-    width: 100px;
-    height: 60px;
+    width: 9rem;
+    height: 5rem;
     background-color: var(--keyThreeBackground);
-    font-size: 32px;
+    font-size: 3.2rem;
     color: var(--textAlt3);
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    border-radius: 1rem;
+    cursor: pointer;
+    box-shadow: 0px 5px 0px 0px var(--keyThreeShadow);
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out;
+
+    @media screen and (max-width: 450px) {
+      width: 7rem;
+      height: 7rem;
+    }
+    &:hover {
+      background-color: var(--keyThreeHover);
+    }
     &--span {
       grid-column: span 2;
-      width: 240px;
+      width: 20.3rem;
+      @media screen and (max-width: 450px) {
+        width: 16rem;
+      }
+    }
+    &--altColor {
+      font-size: 2.4rem;
+      background-color: var(--keyOneBackground);
+      color: var(--White);
+      box-shadow: 0px 5px 0px 0px var(--keyOneShadow);
+      &:hover {
+        background-color: var(--keyOneHover);
+      }
+    }
+    &--altColor2 {
+      background-color: var(--keyTwoBackgroundAndToggle);
+      color: var(--textAlt2);
+      box-shadow: 0px 5px 0px 0px var(--keyTwoShadow);
+      &:hover {
+        background-color: var(--keyTwoHover);
+      }
     }
   }
 }
