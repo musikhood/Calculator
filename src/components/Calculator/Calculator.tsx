@@ -1,4 +1,13 @@
 import React from "react";
+import type { RootState } from "../../reducer/store";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addNumber,
+  reset,
+  addAction,
+  evaluate,
+  del,
+} from "../../reducer/calcReducer";
 import "./calculator.scss";
 
 type Theme = {
@@ -7,6 +16,9 @@ type Theme = {
 };
 
 function Calculator({ setTheme, theme }: Theme) {
+  const currValue = useSelector((state: RootState) => state.calc.currValue);
+  const prevValue = useSelector((state: RootState) => state.calc.prevValue);
+  const dispatch = useDispatch();
   function changeTheme() {
     if (theme === 3) {
       setTheme(1);
@@ -34,31 +46,122 @@ function Calculator({ setTheme, theme }: Theme) {
       </div>
       <div className="Calculator__body">
         <div className="Calculator__screen">
-          <h1>123</h1>
+          <div className="Calculator__prevValue">{prevValue}</div>
+          <div
+            className={`Calculator__currValue ${
+              currValue.length >= 15 && "Calculator__currValue--small"
+            }`}
+          >
+            {currValue}
+          </div>
         </div>
         <div className="Calculator__buttonsContainer">
-          <div className="Calculator__button">7</div>
-          <div className="Calculator__button">8</div>
-          <div className="Calculator__button">9</div>
-          <div className="Calculator__button Calculator__button--altColor">
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addNumber("7"))}
+          >
+            7
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addNumber("8"))}
+          >
+            8
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addNumber("9"))}
+          >
+            9
+          </div>
+          <div
+            className="Calculator__button Calculator__button--altColor"
+            onClick={() => dispatch(del())}
+          >
             DEL
           </div>
-          <div className="Calculator__button">4</div>
-          <div className="Calculator__button">5</div>
-          <div className="Calculator__button">6</div>
-          <div className="Calculator__button">+</div>
-          <div className="Calculator__button">1</div>
-          <div className="Calculator__button">2</div>
-          <div className="Calculator__button">3</div>
-          <div className="Calculator__button">-</div>
-          <div className="Calculator__button">.</div>
-          <div className="Calculator__button">0</div>
-          <div className="Calculator__button">/</div>
-          <div className="Calculator__button">x</div>
-          <div className="Calculator__button Calculator__button--span Calculator__button--altColor">
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addNumber("4"))}
+          >
+            4
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addNumber("5"))}
+          >
+            5
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addNumber("6"))}
+          >
+            6
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addAction("+"))}
+          >
+            +
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addNumber("1"))}
+          >
+            1
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addNumber("2"))}
+          >
+            2
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addNumber("3"))}
+          >
+            3
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addAction("-"))}
+          >
+            -
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addNumber("."))}
+          >
+            .
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addNumber("0"))}
+          >
+            0
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addAction("/"))}
+          >
+            /
+          </div>
+          <div
+            className="Calculator__button"
+            onClick={() => dispatch(addAction("*"))}
+          >
+            x
+          </div>
+          <div
+            className="Calculator__button Calculator__button--span Calculator__button--altColor"
+            onClick={() => dispatch(reset())}
+          >
             RESET
           </div>
-          <div className="Calculator__button Calculator__button--span Calculator__button--altColor2">
+          <div
+            className="Calculator__button Calculator__button--span Calculator__button--altColor2"
+            onClick={() => dispatch(evaluate())}
+          >
             =
           </div>
         </div>

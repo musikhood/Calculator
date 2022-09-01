@@ -4,6 +4,8 @@
   "description": "",
   "main": "./src/index.tsx",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "webpack --config ./webpack.config.js",
     "start": "webpack-dev-server --config ./webpack.config.js"
   },
@@ -11,8 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.5",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2",
+    "redux": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",
