@@ -4,11 +4,13 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 export interface CalcState {
   currValue: string;
   prevValue: string;
+  done: boolean;
 }
 
 const initialState: CalcState = {
   currValue: "",
   prevValue: "",
+  done: false,
 };
 
 export const calcSlice = createSlice({
@@ -17,6 +19,14 @@ export const calcSlice = createSlice({
   reducers: {
     addNumber: (state, action: PayloadAction<string>) => {
       if (state.currValue.length >= 25) {
+        return;
+      }
+      if (state.done) {
+        state.currValue = "";
+        state.done = false;
+      }
+      if (state.currValue === "Infinity") {
+        state.currValue = action.payload;
         return;
       }
       if (
@@ -42,6 +52,9 @@ export const calcSlice = createSlice({
       if (state.currValue === "" && state.prevValue === "") {
         return;
       }
+      if (state.currValue[state.currValue.length - 1] === ".") {
+        state.currValue = state.currValue.slice(0, -1);
+      }
       if (state.currValue === "") {
         state.prevValue = state.prevValue.slice(0, -1);
         state.prevValue += action.payload;
@@ -59,6 +72,10 @@ export const calcSlice = createSlice({
       state.currValue = "";
     },
     evaluate: (state) => {
+      if (state.currValue === "" || state.prevValue === "") {
+        return;
+      }
+      state.done = true;
       state.currValue = String(eval(state.prevValue + state.currValue));
       state.prevValue = "";
     },
