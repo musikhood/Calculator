@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { RootState } from "../../reducer/store";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,21 +11,41 @@ import {
 import "./calculator.scss";
 
 type Theme = {
-  setTheme: React.Dispatch<React.SetStateAction<number>>;
   theme: number;
+  changeTheme: () => void;
 };
 
-function Calculator({ setTheme, theme }: Theme) {
+function Calculator({ theme, changeTheme }: Theme) {
   const currValue = useSelector((state: RootState) => state.calc.currValue);
   const prevValue = useSelector((state: RootState) => state.calc.prevValue);
   const dispatch = useDispatch();
-  function changeTheme() {
-    if (theme === 3) {
-      setTheme(1);
-    } else {
-      setTheme((prevValue) => prevValue + 1);
+
+  function KeyDown(e: KeyboardEvent) {
+    const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."];
+    const actions = ["+", "-", "*", "/"];
+    if (numbers.includes(e.key)) {
+      dispatch(addNumber(e.key));
+      return;
+    }
+    if (actions.includes(e.key)) {
+      dispatch(addAction(e.key));
+      return;
+    }
+    if (e.key === "Backspace") {
+      dispatch(del());
+    }
+    if (e.key === "Enter") {
+      dispatch(evaluate());
+    }
+    if (e.key === "Delete") {
+      dispatch(reset());
     }
   }
+
+  useEffect(() => {
+    window.addEventListener("keydown", KeyDown);
+  }, []);
+
   return (
     <div className="Calculator">
       <div className="Calculator__HeaderContainer">
