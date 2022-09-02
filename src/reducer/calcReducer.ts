@@ -84,6 +84,11 @@ export const calcSlice = createSlice({
         state.currValue = "";
         return;
       }
+      if (state.done) {
+        state.currValue = "";
+        state.done = false;
+        return;
+      }
       state.currValue = state.currValue.slice(0, -1);
     },
   },
