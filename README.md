@@ -1,6 +1,6 @@
 # Calculator App
 
-<img src="./giphy.gif" alt="gif" width="480" height="270"/>
+<img src="./giphy.gif" alt="gif"/>
 
 ---
 
